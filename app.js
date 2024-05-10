@@ -3,6 +3,7 @@ const express=require('express')
 const server=express()
 const authenticationrouter=require('./Routes/Authentication')
 const mongoose=require('mongoose')
+const cors=require('cors')
 
 mongoose.connect(process.env.DB_URL)
         .then(()=>{ 
@@ -14,6 +15,7 @@ mongoose.connect(process.env.DB_URL)
 
 
 server.use(express.json())
+server.use(cors('http://localhost:5173'))
 
 server.get('/',(req,res)=>{
     res.send('working fine')
