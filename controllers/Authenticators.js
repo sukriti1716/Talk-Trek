@@ -1,5 +1,4 @@
 const express=require('express')
-const router=express.Router()
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 const secretkey=process.env.SECRET_KEY
@@ -53,13 +52,13 @@ module.exports.register=async (req,res)=>{
         
         // const token=jwt.sign({id:user._id},secretkey,{expiresIn:"24h"})
         
-        res.status(200).json({
+        res.status(201).json({
             success:true,
             msg:"user registered successfully"
         })
     }
     catch(err){
-        console.log(error)
+        console.log(err)
     }
 
 
