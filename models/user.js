@@ -17,8 +17,12 @@ const userschema=mongoose.Schema({
     phonenumber:{
         type:Number,
         required:true
+    },
+    profilepic:{
+        type:String,
+        default:""
     }
-})
+},{timestamps:true})
 
 const user=mongoose.model('User',userschema)
 
