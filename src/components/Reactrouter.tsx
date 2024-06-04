@@ -1,10 +1,10 @@
 import { useEffect,useState } from "react"
 import axios from "axios"
 import { Outlet } from "react-router-dom"
-import Login from "./Login"
+import Login, { ILoginProps } from "./Login";
 
 
-const Reactrouter = () => {
+const Reactrouter = ({setUserLoggedIn}: ILoginProps) => {
     const token=localStorage.getItem('token')
     const [loading, setLoading] = useState(true);
 
@@ -70,7 +70,7 @@ const Reactrouter = () => {
   return (
     <>
     {
-        usernamedetails.username? <Outlet/> :<Login/>
+        usernamedetails.username? <Outlet/> :<Login setUserLoggedIn={setUserLoggedIn}/>
     }
     
     </>

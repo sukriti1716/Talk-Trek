@@ -4,9 +4,13 @@ import axios from "axios";
 import Box from '@mui/material/Box';
 import { useNavigate,Link } from "react-router-dom";
 import { useFormik } from "formik";
-import * as yup from 'yup'
+import * as yup from 'yup';
 
-const Login = () => {
+export type ILoginProps = {
+    setUserLoggedIn: (value: React.SetStateAction<boolean>) => void
+} 
+
+const Login = ({setUserLoggedIn}: ILoginProps) => {
    
    const  navigate=useNavigate()
 
@@ -37,6 +41,7 @@ const Login = () => {
 
                 if(response.status===200){
                     localStorage.setItem("token",response.data.token);
+                    setUserLoggedIn(true);
                     // localStorage.setItem("user",JSON.stringify(response.data.user))
                     navigate('/dashboard')
                 }

@@ -1,5 +1,10 @@
 import { Button } from "@mui/material"
 
+export interface INavbarProps {
+  userLoggedIn: boolean,
+  setUserLoggedIn: (value: React.SetStateAction<boolean>) => void
+}
+
 const Home = () => {
   return (
     <>
@@ -11,9 +16,11 @@ const Home = () => {
             </div>
             <p style={{fontSize:"4rem",color:"beige",fontFamily:"revert-layer",fontWeight:"lighter"}}>HAVE YOUR BEST CHAT</p>
             <div style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"row",gap:"2rem"}}>
+              {/* {userLoggedIn? "":<Button href="/login" variant="contained" sx={{ backgroundColor: "lightgrey", color: "black" }}>Login</Button>} */}
                 <Button href="/login" variant="contained" sx={{ backgroundColor: "lightgrey", color: "black" }}>Login</Button>
                 <Button href="/register" variant="contained" sx={{  backgroundColor: "lightgrey", color: "black" }}>Create Account</Button>
                 <Button href="/chatbot" variant="contained" sx={{  backgroundColor: "lightgrey", color: "black" }}>ChatAI</Button>
+                <Button href="/dashboard" variant="contained" sx={{  backgroundColor: "lightgrey", color: "black" }}>Dashboard</Button>
             </div>
         </div>
         <img src="homelogo.gif" alt="" height={"350rem"} width={"300rem"} style={{border:"2px solid black",borderRadius:"20%",backgroundColor:"black"}}/>
