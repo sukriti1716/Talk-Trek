@@ -19,7 +19,7 @@ function App() {
   return (
     <div >
 
-      {!location.pathname.includes('home') && !location.pathname.includes('chatbot') && <Navbar
+      {!location.pathname.includes('home') && !location.pathname.includes('chatbot') && location.pathname  !== '/' && <Navbar
         userLoggedIn={userLoggedIn}
         setUserLoggedIn={setUserLoggedIn}
       />}
