@@ -1,6 +1,6 @@
 import {  Button, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../api/axios";
 import Box from '@mui/material/Box';
 import { useNavigate,Link } from "react-router-dom";
 import { useFormik } from "formik";
@@ -37,7 +37,7 @@ const Login = ({setUserLoggedIn}: ILoginProps) => {
         validationSchema:loginschema,
         onSubmit: async(values)=>{
             try{
-                const response=await axios.post("http://localhost:5000/user/login",values)
+                const response=await axios.post("/user/login",values)
 
                 if(response.status===200){
                     localStorage.setItem("token",response.data.token);

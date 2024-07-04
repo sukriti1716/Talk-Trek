@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react"
 import Chatinput from "./Chatinput";
 import Messages from "./Messages";
-import axios from "axios";
+import axios from "../api/axios";
 import socket from './Socket'
 
 
@@ -62,7 +62,7 @@ const Chatcontainer = ({ currentuser, currentchat }: ChatcontainerProps) => {
 
       useEffect(()=>{
         const getmessages=async ()=>{
-          const response=await axios.get(`http://localhost:5000/user/getmsg/${currentuser._id}/${currentchat._id}`,{
+          const response=await axios.get(`/user/getmsg/${currentuser._id}/${currentchat._id}`,{
             headers:{Authorization:`Bearer ${token}`}
         })
        
@@ -91,7 +91,7 @@ const Chatcontainer = ({ currentuser, currentchat }: ChatcontainerProps) => {
       const handlesendmessage=async (message:string):Promise<void>=>{
             setMessage(message)
             console.log(message,currentuser._id,currentchat._id)
-            const response=await axios.post("http://localhost:5000/user/addmsg",{
+            const response=await axios.post("/user/addmsg",{
                 message:message,
                 sender:currentuser._id,
                 reciever:currentchat._id

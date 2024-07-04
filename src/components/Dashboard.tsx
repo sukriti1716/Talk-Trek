@@ -1,6 +1,6 @@
 import {  Button, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../api/axios";
 import Box from '@mui/material/Box';
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ const Dashboard = () => {
         onSubmit: async(values)=>{
             try{
                 const token=localStorage.getItem('token')
-                const response=await axios.post("http://localhost:5000/user/createchatroom",values,{
+                const response=await axios.post("/user/createchatroom",values,{
                     headers:{Authorization:`Bearer ${token}`}
                 })
 
@@ -63,7 +63,7 @@ const Dashboard = () => {
 
    const fetchchatrooms=async ()=>{
     const token=localStorage.getItem('token')
-    const response=await axios.get("http://localhost:5000/user/getchatroom",{
+    const response=await axios.get("/user/getchatroom",{
             headers:{Authorization:`Bearer ${token}`}
     })
     setchatrooms(response.data.chatrooms)

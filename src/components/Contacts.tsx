@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "../api/axios"
 import { useState,useEffect } from "react"
 import { Box ,Button} from "@mui/material"
 import {Link} from "react-router-dom"
@@ -44,7 +44,7 @@ const Contacts = ({handlingchat}:ContactProps) => {
            
               return
           }
-          const response=await axios.get("http://localhost:5000/user/verification",{
+          const response=await axios.get("/user/verification",{
               headers:{Authorization:`Bearer ${token}`}
           })
         //   console.log(response)
@@ -78,7 +78,7 @@ const Contacts = ({handlingchat}:ContactProps) => {
 
     useEffect(()=>{
        const getallcontacts=async()=>{
-        const response=await axios.get('http://localhost:5000/user/getalluser',{
+        const response=await axios.get('/user/getalluser',{
           headers:{Authorization:`Bearer ${token}`}
         })
         // console.log(response)

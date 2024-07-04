@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react"
-import axios from "axios"
+import axios from "../api/axios"
 import { Outlet } from "react-router-dom"
 import Login, { ILoginProps } from "./Login";
 
@@ -31,7 +31,7 @@ const Reactrouter = ({setUserLoggedIn}: ILoginProps) => {
               return
           }
           try {
-            const response = await axios.get("http://localhost:5000/user/verification", {
+            const response = await axios.get("/user/verification", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

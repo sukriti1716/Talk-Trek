@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react"
-import axios from "axios"
+import axios from "../api/axios"
 import Chatbotinput from "./Chatbotinput"
 import { Button } from "@mui/material"
 import { Link } from "react-router-dom"
@@ -31,7 +31,7 @@ const Chatbot = () => {
           if(!token){
               return
           }
-          const response=await axios.get("http://localhost:5000/user/verification",{
+          const response=await axios.get("/user/verification",{
               headers:{Authorization:`Bearer ${token}`}
           })
           // console.log(response)

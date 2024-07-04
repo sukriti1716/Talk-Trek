@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
+import axios from "../api/axios"
 import { Box } from "@mui/material"
 import Contacts from "./Contacts"
 import Welcome from "./Welcome"
@@ -39,7 +39,7 @@ const Chat = () => {
         if(!token){
             return
         }
-        const response=await axios.get("http://localhost:5000/user/verification",{
+        const response=await axios.get("/user/verification",{
             headers:{Authorization:`Bearer ${token}`}
         })
         // console.log(response)
@@ -65,7 +65,7 @@ const Chat = () => {
     //  socket 
 
     useEffect(()=>{
-      const socket=io('http://localhost:5000',{
+      const socket=io(process.env.REACT_APP_SERVERURL as string,{
         query:{userId:usernamedetails._id}
       })
       setSocket(socket)

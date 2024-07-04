@@ -1,7 +1,7 @@
 import {  Button } from '@mui/material';
 import { useState } from 'react';
 import Picker,{EmojiClickData} from 'emoji-picker-react'
-import axios from 'axios';
+import axios from '../api/axios';
 
 interface CurrentUserProps {
     _id: string;
@@ -46,7 +46,7 @@ const Chatbotinput = ({ currentuser ,getmessage}: ChatbotinputProps) => {
     const handlesubmit=async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         setIsLoading(true)  
-        const response=await axios.post('http://localhost:5000/user/getans',{message},{
+        const response=await axios.post('/user/getans',{message},{
             headers:{Authorization:`Bearer ${token}`}
         })
 

@@ -1,5 +1,5 @@
 import { Button,   TextField } from "@mui/material"
-import axios from "axios";
+import axios from "../api/axios";
 import {Typography} from "@mui/material";
 import Box from '@mui/material/Box';
 import { useFormik } from "formik";
@@ -40,7 +40,7 @@ const Register = () => {
         onSubmit:async (values)=>{
            
             try {
-                const response = await axios.post('http://localhost:5000/user/register', values);
+                const response = await axios.post('/user/register', values);
     
                 if (response.status === 201) {
                     // Redirect to login page
