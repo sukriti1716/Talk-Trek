@@ -1,11 +1,10 @@
 FROM node:18-alpine
+WORKDIR /app
 
-COPY package*.json .
-RUN npm i -g npm@latest \
- && npm cache clean --force \
- && npm ci --no-audit --no-fund
+COPY package*.json ./
+RUN npm install
 
 COPY . .
-CMD [ "node", "index.js" ]
+CMD [ "node", "app.js" ]
 
 EXPOSE 5000
